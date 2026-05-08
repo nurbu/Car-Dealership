@@ -9,6 +9,11 @@ import static org.testng.Assert.assertNull;
 public class DealershipTest {
 
     @Test
+    /**
+     * Creates a Dealership and Vehicle
+     * Adds Vehicle into Dealership list
+     * Checks if null
+     */
     public void getVehiclesByPrice() {
         // Arrange
 
