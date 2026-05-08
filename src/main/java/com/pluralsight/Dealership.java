@@ -3,10 +3,14 @@ package com.pluralsight;
 import java.util.ArrayList;
 import java.util.List;
 
+// Dealership details
+
 public class Dealership {
     private String name;
     private String address;
     private String phone;
+
+    // Holds all the vehicles in this dealership
 
     private List<Vehicle> vehicles;
 
@@ -74,7 +78,7 @@ public class Dealership {
     }
 
     public void removeVehicle(Vehicle vehicle) {
-        
+
     }
 
 
