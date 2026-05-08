@@ -12,6 +12,7 @@ public class DealershipTest {
     /**
      * Creates a Dealership and Vehicle
      * Adds Vehicle into Dealership list
+     * Gets a list of all the vehicles in "Audi" dealership within price range
      * Checks if null
      */
     public void getVehiclesByPrice() {
@@ -124,6 +125,12 @@ public class DealershipTest {
     }
 
     @Test
+    /**
+     * Creates a Dealership and Vehicle
+     * Adds Vehicle into Dealership list
+     * Gets a list of all the vehicles in "Audi" dealership
+     * Checks size of list after adding 1 vehicle
+     */
     public void getAllVehicles() {
         // Arrange
 
@@ -140,6 +147,13 @@ public class DealershipTest {
     }
 
     @Test
+    /**
+     * Creates a Dealership and Vehicle
+     * Adds Vehicle into Dealership list
+     * Gets a list of all the vehicles in "Audi" dealership
+     * Checks if vehicles list has vehicle that was just added.
+     * Also, checks the size of the list should be 1
+     */
     public void addVehicle() {
         // Arrange
 
