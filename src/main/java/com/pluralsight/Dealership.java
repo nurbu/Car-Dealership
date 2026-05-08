@@ -10,11 +10,11 @@ public class Dealership {
 
     private List<Vehicle> vehicles;
 
-    public Dealership(ArrayList<Vehicle> vehicles, String name, String address, String phone) {
-        this.vehicles = vehicles;
+    public Dealership(String name, String address, String phone) {
         this.name = name;
         this.address = address;
         this.phone = phone;
+        vehicles = new ArrayList<>();
     }
 
     public String getName() {
@@ -40,4 +40,6 @@ public class Dealership {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+
 }
