@@ -69,7 +69,7 @@ public class DealershipFileManager {
                     String vehicleType = values[4];
                     String color = values[5];
                     int odometer = Integer.valueOf(values[6]);
-                    double price = Double.valueOf(values[7]);
+                    double price = parseDouble(values[7]);
 
                     Vehicle vehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
                     dealership.addVehicle(vehicle);
@@ -84,5 +84,16 @@ public class DealershipFileManager {
             System.out.println("Error reading file:  " + e.getMessage());
         }
         return dealership;
+    }
+
+    private static Double parseDouble(String s) {
+        if (s.isEmpty()) {
+            throw new IllegalArgumentException("Input can't be empty");
+        }
+        try {
+            return Double.parseDouble(s);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid number: " + s);
+        }
     }
 }
