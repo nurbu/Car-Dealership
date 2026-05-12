@@ -86,6 +86,17 @@ public class DealershipFileManager {
         return dealership;
     }
 
+
+    /* --------------------------------------------------------------------------
+       Helper Functions
+
+     * Parse double and int strings
+     * if s is empty throws Exception with Custom message (skipped by user)
+     * Uses try/catch to check if user input valid.
+     * if s is not a number or in a Double format throws Exception
+
+       -------------------------------------------------------------------------- */
+
     private static Double parseDouble(String s) {
         if (s.isEmpty()) {
             throw new IllegalArgumentException("Input can't be empty");
