@@ -75,6 +75,7 @@ public class Dealership {
 
     public void addVehicle(Vehicle vehicle) {
         vehicles.add(vehicle);
+        System.out.println(vehicle);
     }
 
     public void removeVehicle(Vehicle vehicle) {
