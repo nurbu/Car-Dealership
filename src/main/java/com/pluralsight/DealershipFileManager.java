@@ -62,13 +62,13 @@ public class DealershipFileManager {
                         throw new Exception("Incomplete line " + line);
                     }
 
-                    int vin = Integer.valueOf(values[0]);
-                    int year = Integer.valueOf(values[1]);
+                    int vin = parseInt(values[0]);
+                    int year = parseInt(values[1]);
                     String make = values[2];
                     String model = values[3];
                     String vehicleType = values[4];
                     String color = values[5];
-                    int odometer = Integer.valueOf(values[6]);
+                    int odometer = parseInt(values[6]);
                     double price = parseDouble(values[7]);
 
                     Vehicle vehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
@@ -92,6 +92,17 @@ public class DealershipFileManager {
         }
         try {
             return Double.parseDouble(s);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid number: " + s);
+        }
+    }
+
+    private static int parseInt(String s) {
+        if (s.isEmpty()) {
+            throw new IllegalArgumentException("Input can't be empty");
+        }
+        try {
+            return Integer.parseInt(s);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Invalid number: " + s);
         }
