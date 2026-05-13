@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    Dealership dealership;
+    private Dealership dealership;
 
     public UserInterface() {
     }
