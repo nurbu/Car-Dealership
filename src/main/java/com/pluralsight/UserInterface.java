@@ -172,6 +172,7 @@ public class UserInterface {
     private void processGetAllVehiclesRequest() {
 
         List<Vehicle> vehicles = dealership.getAllVehicles();
+        System.out.println("\n" + FORMATTED_HEADER);
         displayVehicles(vehicles);
 
     }

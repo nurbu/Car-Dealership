@@ -53,7 +53,7 @@ public class Dealership {
                 cars.add(vehicle);
             }
         }
-        return vehicles;
+        return cars;
     }
 
     public List<Vehicle> getVehiclesByMake(String make, String model) {
