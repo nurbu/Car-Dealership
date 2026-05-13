@@ -6,6 +6,12 @@ import java.util.Scanner;
 public class UserInterface {
 
     private Dealership dealership;
+    private static final String ROW_FORMAT =
+            "%-8s %-6s %-12s %-12s %-8s %-8s %-10s %-10s%n";
+    private static final String FORMATTED_HEADER = String.format(ROW_FORMAT,
+            "VIN", "Year", "Make", "Model", "Type", "Color", "Odometer", "Price")
+            + "-".repeat(80);
+
 
     public UserInterface() {
     }
@@ -32,7 +38,7 @@ public class UserInterface {
             System.out.print("Your choice: ");
 
             if (!scanner.hasNextInt()) {
-                System.out.println("Please enter 1-9.");
+                System.out.println("Please enter 1-10.");
                 scanner.nextLine();                 // discard bad input
                 continue;
             }
@@ -40,15 +46,15 @@ public class UserInterface {
             scanner.nextLine();                     // clear newline
 
             switch (choice) {
-                case 1 -> processGetByPriceRequest();
-                case 2 -> processGetByMakeModelRequest();
-                case 3 -> processGetByYearRequest();
-                case 4 -> processGetByColorRequest();
-                case 5 -> processGetByMileageRequest();
-                case 6 -> processGetByVehicleTypeRequest();
+                case 1 -> processGetByPriceRequest(scanner);
+                case 2 -> processGetByMakeModelRequest(scanner);
+                case 3 -> processGetByYearRequest(scanner);
+                case 4 -> processGetByColorRequest(scanner);
+                case 5 -> processGetByMileageRequest(scanner);
+                case 6 -> processGetByVehicleTypeRequest(scanner);
                 case 7 -> processGetAllVehiclesRequest();
-                case 8 -> processAddVehicleRequest();
-                case 9 -> processRemoveVehicleRequest();
+                case 8 -> processAddVehicleRequest(scanner);
+                case 9 -> processRemoveVehicleRequest(scanner);
                 case 10 -> System.out.println("Thank you for visiting our dealership!");
                 default -> System.out.println("Invalid choice!");
             }
@@ -56,28 +62,36 @@ public class UserInterface {
         scanner.close();
     }
 
-    private void processRemoveVehicleRequest() {
+    private void processGetByPriceRequest(Scanner scanner) {
+        System.out.println("Filtering by price");
+        System.out.print("Enter min price: ");
+        double minPrice = scanner.nextDouble();
+        scanner.nextLine();
+        System.out.print("Enter max price: ");
+        double maxPrice = scanner.nextDouble();
+        scanner.nextLine();
+
+        System.out.println("Based off your price range of " + minPrice + " and " + maxPrice + ".\n");
+
+        List<Vehicle> vehicles = dealership.getVehiclesByPrice(minPrice, maxPrice);
+        System.out.println(FORMATTED_HEADER);
+        displayVehicles(vehicles);
+
     }
 
-    private void processAddVehicleRequest() {
+    private void processGetByMakeModelRequest(Scanner scanner) {
     }
 
-    private void processGetByVehicleTypeRequest() {
+    private void processGetByYearRequest(Scanner scanner) {
     }
 
-    private void processGetByMileageRequest() {
+    private void processGetByColorRequest(Scanner scanner) {
     }
 
-    private void processGetByColorRequest() {
+    private void processGetByMileageRequest(Scanner scanner) {
     }
 
-    private void processGetByYearRequest() {
-    }
-
-    private void processGetByMakeModelRequest() {
-    }
-
-    private void processGetByPriceRequest() {
+    private void processGetByVehicleTypeRequest(Scanner scanner) {
     }
 
     /**
@@ -89,6 +103,14 @@ public class UserInterface {
         displayVehicles(vehicles);
 
     }
+
+    private void processAddVehicleRequest(Scanner scanner) {
+    }
+
+    private void processRemoveVehicleRequest(Scanner scanner) {
+    }
+
+
 
     /* --------------------------------------------------------------------------
        Helper Functions
@@ -111,7 +133,7 @@ public class UserInterface {
     private void displayVehicles(List<Vehicle> vehicles) {
 
         for (Vehicle vehicle : vehicles) {
-            System.out.println(vehicle.toString());
+            System.out.println(vehicle);
         }
     }
 }

@@ -11,6 +11,7 @@ public class Vehicle {
     private String color;
     private int odometer;
     private double price;
+    public static final String ROW_FORMAT = "%-8s %-6s %-12s %-12s %-8s %-8s %-10s %-10s";
 
     public Vehicle(int vin, int year, String make, String model, String vehicleType, String color, int odometer, double price) {
         this.vin = vin;
@@ -90,9 +91,6 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        return "Vin: " + vin + ", Year: " + year + ", Make: " + make
-                + ", Model: " + model + ", Vehicle Type: " + vehicleType
-                + ", Color: " + color + ", Odometer: " + odometer
-                + ", Price: " + price;
+        return String.format(ROW_FORMAT, vin, year, make, model, vehicleType, color, odometer, "$" + price);
     }
 }
