@@ -193,16 +193,20 @@ public class UserInterface {
         String model = scanner.nextLine();
         System.out.print("Enter Type: ");
         String type = scanner.nextLine();
-        System.out.println("Enter Color: ");
+        System.out.print("Enter Color: ");
         String color = scanner.nextLine();
-        System.out.println("Enter Mileage: ");
+        System.out.print("Enter Mileage: ");
         int mileage = scanner.nextInt();
         scanner.nextLine();
-        System.out.println("Enter Price: ");
+        System.out.print("Enter Price: ");
         double price = scanner.nextDouble();
         scanner.nextLine();
 
-        dealership.addVehicle(new Vehicle(vin, year, make, model, type, color, mileage, price));
+        System.out.println("\nAdded Vehicle");
+        System.out.println("\n" + FORMATTED_HEADER);
+        Vehicle vehicle = new Vehicle(vin, year, make, model, type, color, mileage, price);
+        System.out.println(vehicle);
+        dealership.addVehicle(vehicle);
 
     }
 
@@ -222,16 +226,20 @@ public class UserInterface {
         String model = scanner.nextLine();
         System.out.print("Enter Type: ");
         String type = scanner.nextLine();
-        System.out.println("Enter Color: ");
+        System.out.print("Enter Color: ");
         String color = scanner.nextLine();
-        System.out.println("Enter Mileage: ");
+        System.out.print("Enter Mileage: ");
         int mileage = scanner.nextInt();
         scanner.nextLine();
-        System.out.println("Enter Price: ");
+        System.out.print("Enter Price: ");
         double price = scanner.nextDouble();
         scanner.nextLine();
 
-        dealership.removeVehicle(new Vehicle(vin, year, make, model, type, color, mileage, price));
+        System.out.println("\nRemoved Vehicle");
+        System.out.println("\n" + FORMATTED_HEADER);
+        Vehicle vehicle = new Vehicle(vin, year, make, model, type, color, mileage, price);
+        System.out.println(vehicle);
+        dealership.removeVehicle(vehicle);
 
     }
 
