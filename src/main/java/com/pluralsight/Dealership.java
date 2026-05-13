@@ -45,6 +45,10 @@ public class Dealership {
         this.phone = phone;
     }
 
+   /* --------------------------------------------------------------------------
+       Filter Functions
+       -------------------------------------------------------------------------- */
+
     public List<Vehicle> getVehiclesByPrice(double min, double max) {
 
         List<Vehicle> cars = new ArrayList<>();
@@ -112,6 +116,10 @@ public class Dealership {
     public List<Vehicle> getAllVehicles() {
         return vehicles;
     }
+
+    /* --------------------------------------------------------------------------
+       Modify inventory.csv Functions
+       -------------------------------------------------------------------------- */
 
     public void addVehicle(Vehicle vehicle) {
 

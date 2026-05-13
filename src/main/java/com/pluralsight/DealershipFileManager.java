@@ -83,13 +83,24 @@ public class DealershipFileManager {
         return dealership;
     }
 
+    /**
+     * Updates inventory.csv
+     *
+     * @param dealership
+     */
+
     public static void saveDealership(Dealership dealership) {
 
+        // Uses try-with-resources to auto-close BufferReader
+
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("inventory.csv"))) {
+
+            // Writes the header
 
             bw.write(dealership.getName() + "|" + dealership.getAddress() + "|" + dealership.getPhone());
             bw.newLine();
 
+            // Loops through vehicles list within dealership and writes to inventory.csv
             for (Vehicle vehicle : dealership.getAllVehicles()) {
                 bw.write(vehicle.getVin() + "|" + vehicle.getYear() + "|"
                         + vehicle.getMake() + "|" + vehicle.getModel() + "|"

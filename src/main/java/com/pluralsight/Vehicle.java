@@ -89,6 +89,11 @@ public class Vehicle {
         this.price = price;
     }
 
+    /**
+     * Returns a preformatted string
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return String.format(ROW_FORMAT, vin, year, make, model, vehicleType, color, odometer, "$" + price);

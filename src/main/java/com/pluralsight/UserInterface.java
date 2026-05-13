@@ -6,6 +6,9 @@ import java.util.Scanner;
 public class UserInterface {
 
     private Dealership dealership;
+
+    // Header for columns
+
     private static final String ROW_FORMAT =
             "%-8s %-6s %-12s %-12s %-8s %-8s %-10s %-10s%n";
     private static final String FORMATTED_HEADER = String.format(ROW_FORMAT,
@@ -15,6 +18,8 @@ public class UserInterface {
 
     public UserInterface() {
     }
+
+    // Displays menu
 
     public void display() {
 
@@ -62,6 +67,15 @@ public class UserInterface {
         scanner.close();
     }
 
+    /* --------------------------------------------------------------------------
+           Filter functions
+
+           *Get filter inputs
+           *Use helper functions from dealership object
+           to retrieve a custom list
+           *Use display Vehicles to display all vehicles within custom list.
+
+           -------------------------------------------------------------------------- */
     private void processGetByPriceRequest(Scanner scanner) {
 
         System.out.println("Filtering by Price");
