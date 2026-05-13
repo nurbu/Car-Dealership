@@ -11,10 +11,10 @@ public class UserInterface {
 
     private static final String ROW_FORMAT =
             "%-8s %-6s %-12s %-12s %-8s %-8s %-10s %-10s%n";
-    private static final String FORMATTED_HEADER = String.format(ROW_FORMAT,
+    private static final String FORMATTED_HEADER = Colors.HEADER + String.format(ROW_FORMAT,
             "VIN", "Year", "Make", "Model", "Type", "Color", "Odometer", "Price")
-            + "-".repeat(80);
-
+            + "-".repeat(80) + Colors.RESET;
+    private static final String BOTTOM_DASHES = (Colors.HEADER + "-".repeat(80) + "\n" + Colors.RESET);
 
     public UserInterface() {
     }
@@ -28,7 +28,7 @@ public class UserInterface {
         Scanner scanner = new Scanner(System.in);
         int choice = -1;
         while (choice != 10) {
-            System.out.println("Welcome to the Dealership!\n");
+            System.out.println(Colors.HEADER + "Welcome to the Dealership!" + Colors.RESET + "\n");
 
             System.out.println("1. Filter by price");
             System.out.println("2. Filter by Make and Model");
@@ -43,7 +43,7 @@ public class UserInterface {
             System.out.print("Your choice: ");
 
             if (!scanner.hasNextInt()) {
-                System.out.println("Please enter 1-10.");
+                System.out.println(Colors.ERROR + "Please enter 1-10." + Colors.RESET + "\n");
                 scanner.nextLine();                 // discard bad input
                 continue;
             }
@@ -61,7 +61,7 @@ public class UserInterface {
                 case 8 -> processAddVehicleRequest(scanner);
                 case 9 -> processRemoveVehicleRequest(scanner);
                 case 10 -> System.out.println("Thank you for visiting our dealership!");
-                default -> System.out.println("Invalid choice!");
+                default -> System.out.println(Colors.ERROR + "Invalid choice!" + Colors.RESET + "\n");
             }
         }
         scanner.close();
@@ -78,7 +78,7 @@ public class UserInterface {
            -------------------------------------------------------------------------- */
     private void processGetByPriceRequest(Scanner scanner) {
 
-        System.out.println("Filtering by Price\n");
+        System.out.println(Colors.HEADER + "\nFiltering by Price\n" + Colors.RESET);
         double minPrice = parseDouble(scanner, "Enter Min Price: ");
         double maxPrice = parseDouble(scanner, "Enter Max Price: ");
 
@@ -88,12 +88,13 @@ public class UserInterface {
 
         System.out.println(FORMATTED_HEADER);
         displayVehicles(vehicles);
+        System.out.println(BOTTOM_DASHES);
 
     }
 
     private void processGetByMakeModelRequest(Scanner scanner) {
 
-        System.out.println("Filtering by Make and Model\n");
+        System.out.println(Colors.HEADER + "\nFiltering by Make and Model\n" + Colors.RESET);
         System.out.print("Enter Make: ");
         String make = scanner.nextLine();
         System.out.print("Enter Model: ");
@@ -105,12 +106,13 @@ public class UserInterface {
 
         System.out.println(FORMATTED_HEADER);
         displayVehicles(vehicles);
+        System.out.println(BOTTOM_DASHES);
 
     }
 
     private void processGetByYearRequest(Scanner scanner) {
 
-        System.out.println("Filtering by Year\n");
+        System.out.println(Colors.HEADER + "\nFiltering by Year\n" + Colors.RESET);
 
         int minYear = parseInt(scanner, "Enter Min Year: ");
         int maxYear = parseInt(scanner, "Enter Max Year: ");
@@ -121,12 +123,13 @@ public class UserInterface {
 
         System.out.println(FORMATTED_HEADER);
         displayVehicles(vehicles);
+        System.out.println(BOTTOM_DASHES);
 
     }
 
     private void processGetByColorRequest(Scanner scanner) {
 
-        System.out.println("Filtering by Color\n");
+        System.out.println(Colors.HEADER + "\nFiltering by Color\n" + Colors.RESET);
         System.out.print("Enter Color: ");
         String color = scanner.nextLine();
 
@@ -136,12 +139,13 @@ public class UserInterface {
 
         System.out.println(FORMATTED_HEADER);
         displayVehicles(vehicles);
+        System.out.println(BOTTOM_DASHES);
 
     }
 
     private void processGetByMileageRequest(Scanner scanner) {
 
-        System.out.println("Filtering by Mileage\n");
+        System.out.println(Colors.HEADER + "\nFiltering by Mileage\n" + Colors.RESET);
         int minMileage = parseInt(scanner, "Enter Min Mileage: ");
         int maxMileage = parseInt(scanner, "Enter Max Mileage: ");
 
@@ -151,12 +155,13 @@ public class UserInterface {
 
         System.out.println(FORMATTED_HEADER);
         displayVehicles(vehicles);
+        System.out.println(BOTTOM_DASHES);
 
     }
 
     private void processGetByVehicleTypeRequest(Scanner scanner) {
 
-        System.out.println("Filtering by Vehicle Type\n");
+        System.out.println(Colors.HEADER + "\nFiltering by Vehicle Type\n" + Colors.RESET);
         System.out.print("Enter Vehicle Type: ");
         String vehicleType = scanner.nextLine();
 
@@ -166,6 +171,7 @@ public class UserInterface {
 
         System.out.println(FORMATTED_HEADER);
         displayVehicles(vehicles);
+        System.out.println(BOTTOM_DASHES);
 
     }
 
@@ -177,16 +183,16 @@ public class UserInterface {
         List<Vehicle> vehicles = dealership.getAllVehicles();
         System.out.println("\n" + FORMATTED_HEADER);
         displayVehicles(vehicles);
+        System.out.println(BOTTOM_DASHES);
 
     }
 
     private void processAddVehicleRequest(Scanner scanner) {
 
-        System.out.println("Adding a Vehicle");
+        System.out.println(Colors.HEADER + "\nAdding a Vehicle" + Colors.RESET);
 
         int vin = parseInt(scanner, "Enter Vin: ");
-        System.out.print("Enter Year Manufactured: ");
-        int year = parseInt(scanner, "Enter Year: ");
+        int year = parseInt(scanner, "Enter Year  Manufactured: ");
         System.out.print("Enter Make: ");
         String make = scanner.nextLine();
         System.out.print("Enter Model: ");
@@ -198,22 +204,22 @@ public class UserInterface {
         int mileage = parseInt(scanner, "Enter Mileage: ");
         double price = parseDouble(scanner, "Enter Price: ");
 
-        System.out.println("\nAdded Vehicle");
+        System.out.println(Colors.SUCCESS + "\nAdded Vehicle" + Colors.RESET);
         System.out.println("\n" + FORMATTED_HEADER);
         Vehicle vehicle = new Vehicle(vin, year, make, model, type, color, mileage, price);
         System.out.println(vehicle);
         dealership.addVehicle(vehicle);
         DealershipFileManager.saveDealership(dealership);
+        System.out.println(BOTTOM_DASHES);
 
     }
 
     private void processRemoveVehicleRequest(Scanner scanner) {
 
-        System.out.println("Removing a Vehicle");
+        System.out.println(Colors.HEADER + "\nRemoving a Vehicle" + Colors.RESET);
 
         int vin = parseInt(scanner, "Enter Vin: ");
-        System.out.print("Enter Year Manufactured: ");
-        int year = parseInt(scanner, "Enter Year: ");
+        int year = parseInt(scanner, "Enter Year Manufactured: ");
         System.out.print("Enter Make: ");
         String make = scanner.nextLine();
         System.out.print("Enter Model: ");
@@ -225,12 +231,13 @@ public class UserInterface {
         int mileage = parseInt(scanner, "Enter Mileage: ");
         double price = parseDouble(scanner, "Enter Price: ");
 
-        System.out.println("\nRemoved Vehicle");
+        System.out.println(Colors.SUCCESS + "\nRemoved Vehicle" + Colors.RESET);
         System.out.println("\n" + FORMATTED_HEADER);
         Vehicle vehicle = new Vehicle(vin, year, make, model, type, color, mileage, price);
         System.out.println(vehicle);
         dealership.removeVehicle(vehicle);
         DealershipFileManager.saveDealership(dealership);
+        System.out.println(BOTTOM_DASHES);
 
     }
 
@@ -258,7 +265,7 @@ public class UserInterface {
     private void displayVehicles(List<Vehicle> vehicles) {
 
         if (vehicles == null || vehicles.isEmpty()) {
-            System.out.println("No Vehicles found.");
+            System.out.println(Colors.WARN + "No Vehicles found." + Colors.RESET);
         } else {
             for (Vehicle vehicle : vehicles) {
                 System.out.println(vehicle);
@@ -282,7 +289,7 @@ public class UserInterface {
                 return Double.parseDouble(input);
 
             } catch (NumberFormatException e) {
-                System.out.println("Please enter a valid number");
+                System.out.println(Colors.WARN + "Please enter a valid number" + Colors.RESET);
             }
         }
     }
@@ -295,7 +302,7 @@ public class UserInterface {
                 return Integer.parseInt(input);
 
             } catch (NumberFormatException e) {
-                System.out.println("Please enter a valid number");
+                System.out.println(Colors.WARN + "Please enter a valid number" + Colors.RESET);
             }
         }
     }
