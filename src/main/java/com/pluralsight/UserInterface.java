@@ -28,7 +28,7 @@ public class UserInterface {
         Scanner scanner = new Scanner(System.in);
         int choice = -1;
         while (choice != 10) {
-            System.out.println("\nWelcome to the Dealership!");
+            System.out.println("Welcome to the Dealership!\n");
 
             System.out.println("1. Filter by price");
             System.out.println("2. Filter by Make and Model");
@@ -78,13 +78,9 @@ public class UserInterface {
            -------------------------------------------------------------------------- */
     private void processGetByPriceRequest(Scanner scanner) {
 
-        System.out.println("Filtering by Price");
-        System.out.print("Enter Min Price: ");
-        double minPrice = scanner.nextDouble();
-        scanner.nextLine();
-        System.out.print("Enter Max Price: ");
-        double maxPrice = scanner.nextDouble();
-        scanner.nextLine();
+        System.out.println("Filtering by Price\n");
+        double minPrice = parseDouble(scanner, "Enter Min Price: ");
+        double maxPrice = parseDouble(scanner, "Enter Max Price: ");
 
         System.out.println("Based off your price range of " + minPrice + " and " + maxPrice + ".\n");
 
@@ -97,7 +93,7 @@ public class UserInterface {
 
     private void processGetByMakeModelRequest(Scanner scanner) {
 
-        System.out.println("Filtering by Make and Model");
+        System.out.println("Filtering by Make and Model\n");
         System.out.print("Enter Make: ");
         String make = scanner.nextLine();
         System.out.print("Enter Model: ");
@@ -114,13 +110,10 @@ public class UserInterface {
 
     private void processGetByYearRequest(Scanner scanner) {
 
-        System.out.println("Filtering by Year");
-        System.out.print("Enter Min Year: ");
-        int minYear = scanner.nextInt();
-        scanner.nextLine();
-        System.out.print("Enter Max Year: ");
-        int maxYear = scanner.nextInt();
-        scanner.nextLine();
+        System.out.println("Filtering by Year\n");
+
+        int minYear = parseInt(scanner, "Enter Min Year: ");
+        int maxYear = parseInt(scanner, "Enter Max Year: ");
 
         System.out.println("Based off your Year range of " + minYear + " and " + maxYear + ".\n");
 
@@ -133,7 +126,7 @@ public class UserInterface {
 
     private void processGetByColorRequest(Scanner scanner) {
 
-        System.out.println("Filtering by Color");
+        System.out.println("Filtering by Color\n");
         System.out.print("Enter Color: ");
         String color = scanner.nextLine();
 
@@ -148,13 +141,9 @@ public class UserInterface {
 
     private void processGetByMileageRequest(Scanner scanner) {
 
-        System.out.println("Filtering by Mileage");
-        System.out.print("Enter Min Mileage: ");
-        int minMileage = scanner.nextInt();
-        scanner.nextLine();
-        System.out.print("Enter Max Mileage: ");
-        int maxMileage = scanner.nextInt();
-        scanner.nextLine();
+        System.out.println("Filtering by Mileage\n");
+        int minMileage = parseInt(scanner, "Enter Min Mileage: ");
+        int maxMileage = parseInt(scanner, "Enter Max Mileage: ");
 
         System.out.println("Based off your Mileage range of " + minMileage + " and " + maxMileage + ".\n");
 
@@ -167,7 +156,7 @@ public class UserInterface {
 
     private void processGetByVehicleTypeRequest(Scanner scanner) {
 
-        System.out.println("Filtering by Vehicle Type");
+        System.out.println("Filtering by Vehicle Type\n");
         System.out.print("Enter Vehicle Type: ");
         String vehicleType = scanner.nextLine();
 
@@ -195,12 +184,9 @@ public class UserInterface {
 
         System.out.println("Adding a Vehicle");
 
-        System.out.print("Enter Vin: ");
-        int vin = scanner.nextInt();
-        scanner.nextLine();
+        int vin = parseInt(scanner, "Enter Vin: ");
         System.out.print("Enter Year Manufactured: ");
-        int year = scanner.nextInt();
-        scanner.nextLine();
+        int year = parseInt(scanner, "Enter Year: ");
         System.out.print("Enter Make: ");
         String make = scanner.nextLine();
         System.out.print("Enter Model: ");
@@ -209,12 +195,8 @@ public class UserInterface {
         String type = scanner.nextLine();
         System.out.print("Enter Color: ");
         String color = scanner.nextLine();
-        System.out.print("Enter Mileage: ");
-        int mileage = scanner.nextInt();
-        scanner.nextLine();
-        System.out.print("Enter Price: ");
-        double price = scanner.nextDouble();
-        scanner.nextLine();
+        int mileage = parseInt(scanner, "Enter Mileage: ");
+        double price = parseDouble(scanner, "Enter Price: ");
 
         System.out.println("\nAdded Vehicle");
         System.out.println("\n" + FORMATTED_HEADER);
@@ -229,12 +211,9 @@ public class UserInterface {
 
         System.out.println("Removing a Vehicle");
 
-        System.out.print("Enter Vin: ");
-        int vin = scanner.nextInt();
-        scanner.nextLine();
+        int vin = parseInt(scanner, "Enter Vin: ");
         System.out.print("Enter Year Manufactured: ");
-        int year = scanner.nextInt();
-        scanner.nextLine();
+        int year = parseInt(scanner, "Enter Year: ");
         System.out.print("Enter Make: ");
         String make = scanner.nextLine();
         System.out.print("Enter Model: ");
@@ -243,12 +222,8 @@ public class UserInterface {
         String type = scanner.nextLine();
         System.out.print("Enter Color: ");
         String color = scanner.nextLine();
-        System.out.print("Enter Mileage: ");
-        int mileage = scanner.nextInt();
-        scanner.nextLine();
-        System.out.print("Enter Price: ");
-        double price = scanner.nextDouble();
-        scanner.nextLine();
+        int mileage = parseInt(scanner, "Enter Mileage: ");
+        double price = parseDouble(scanner, "Enter Price: ");
 
         System.out.println("\nRemoved Vehicle");
         System.out.println("\n" + FORMATTED_HEADER);
@@ -283,6 +258,40 @@ public class UserInterface {
 
         for (Vehicle vehicle : vehicles) {
             System.out.println(vehicle);
+        }
+    }
+
+    /**
+     * Handles any invalid inputs
+     *
+     * @param scanner
+     * @param prompt  Allows to work with different prompts.
+     * @return When only when input is valid.
+     */
+
+    private Double parseDouble(Scanner scanner, String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String input = scanner.nextLine();
+            try {
+                return Double.parseDouble(input);
+
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number");
+            }
+        }
+    }
+
+    private int parseInt(Scanner scanner, String prompt) {
+        while (true) {
+            System.out.println(prompt);
+            String input = scanner.nextLine();
+            try {
+                return Integer.parseInt(input);
+
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number");
+            }
         }
     }
 }
