@@ -8,6 +8,13 @@ import java.util.List;
 
 public class DealershipFileManagerTest {
 
+    /**
+     * Creates new dealershipFileManager
+     * imports inventory.csv information into dealershipFileManager
+     * create correct input array
+     * Compare the toStrings of both arrays
+     * keep track using boolean test
+     */
     @Test
     public void testGetDealership() {
         //Arrange
