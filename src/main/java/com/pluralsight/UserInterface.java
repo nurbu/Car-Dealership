@@ -56,15 +56,43 @@ public class UserInterface {
         scanner.close();
     }
 
+    private void processRemoveVehicleRequest() {
+    }
+
+    private void processAddVehicleRequest() {
+    }
+
+    private void processGetByVehicleTypeRequest() {
+    }
+
+    private void processGetByMileageRequest() {
+    }
+
+    private void processGetByColorRequest() {
+    }
+
+    private void processGetByYearRequest() {
+    }
+
+    private void processGetByMakeModelRequest() {
+    }
+
+    private void processGetByPriceRequest() {
+    }
+
     /**
      * Displays all vehicles within dealership's inventory
      */
-    public void processAllVehiclesRequest() {
+    private void processGetAllVehiclesRequest() {
 
         List<Vehicle> vehicles = dealership.getAllVehicles();
         displayVehicles(vehicles);
 
     }
+
+    /* --------------------------------------------------------------------------
+       Helper Functions
+       -------------------------------------------------------------------------- */
 
     /**
      * Loads dealership details from dealerShipFileManager
