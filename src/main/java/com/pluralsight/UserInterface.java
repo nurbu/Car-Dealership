@@ -57,6 +57,16 @@ public class UserInterface {
     }
 
     /**
+     * Displays all vehicles within dealership's inventory
+     */
+    public void processAllVehiclesRequest() {
+
+        List<Vehicle> vehicles = dealership.getAllVehicles();
+        displayVehicles(vehicles);
+
+    }
+
+    /**
      * Loads dealership details from dealerShipFileManager
      * into this.dealerShip
      */
