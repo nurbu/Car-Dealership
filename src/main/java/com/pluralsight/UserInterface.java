@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -62,5 +63,17 @@ public class UserInterface {
     private void init() {
         DealershipFileManager dealershipFileManager = new DealershipFileManager();
         this.dealership = dealershipFileManager.getDealership();
+    }
+
+    /**
+     * Prints all the vehicles given within filtered list
+     *
+     * @param vehicles A custom list of vehicles (filtered)
+     */
+    private void displayVehicles(List<Vehicle> vehicles) {
+
+        for (Vehicle vehicle : vehicles) {
+            System.out.println(vehicle.toString());
+        }
     }
 }
