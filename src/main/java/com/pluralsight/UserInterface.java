@@ -177,9 +177,61 @@ public class UserInterface {
     }
 
     private void processAddVehicleRequest(Scanner scanner) {
+
+        System.out.println("Adding a Vehicle");
+
+        System.out.print("Enter Vin: ");
+        int vin = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Enter Year Manufactured: ");
+        int year = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Enter Make: ");
+        String make = scanner.nextLine();
+        System.out.print("Enter Model: ");
+        String model = scanner.nextLine();
+        System.out.print("Enter Type: ");
+        String type = scanner.nextLine();
+        System.out.println("Enter Color: ");
+        String color = scanner.nextLine();
+        System.out.println("Enter Mileage: ");
+        int mileage = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter Price: ");
+        double price = scanner.nextDouble();
+        scanner.nextLine();
+
+        dealership.addVehicle(new Vehicle(vin, year, make, model, type, color, mileage, price));
+
     }
 
     private void processRemoveVehicleRequest(Scanner scanner) {
+
+        System.out.println("Removing a Vehicle");
+
+        System.out.print("Enter Vin: ");
+        int vin = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Enter Year Manufactured: ");
+        int year = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Enter Make: ");
+        String make = scanner.nextLine();
+        System.out.print("Enter Model: ");
+        String model = scanner.nextLine();
+        System.out.print("Enter Type: ");
+        String type = scanner.nextLine();
+        System.out.println("Enter Color: ");
+        String color = scanner.nextLine();
+        System.out.println("Enter Mileage: ");
+        int mileage = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter Price: ");
+        double price = scanner.nextDouble();
+        scanner.nextLine();
+
+        dealership.removeVehicle(new Vehicle(vin, year, make, model, type, color, mileage, price));
+
     }
 
 
