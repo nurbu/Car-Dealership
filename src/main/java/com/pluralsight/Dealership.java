@@ -46,6 +46,7 @@ public class Dealership {
     }
 
     public List<Vehicle> getVehiclesByPrice(double min, double max) {
+
         List<Vehicle> cars = new ArrayList<>();
         for (Vehicle vehicle : vehicles) {
             if (vehicle.getPrice() >= min && vehicle.getPrice() <= max) {
@@ -56,23 +57,56 @@ public class Dealership {
     }
 
     public List<Vehicle> getVehiclesByMake(String make, String model) {
-        return null;
+        List<Vehicle> cars = new ArrayList<>();
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.getMake().equals(make) && vehicle.getModel().equals(model)) {
+                cars.add(vehicle);
+            }
+        }
+        return cars;
+
     }
 
     public List<Vehicle> getVehiclesByYear(int min, int max) {
-        return null;
+        List<Vehicle> cars = new ArrayList<>();
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.getYear() >= min && vehicle.getYear() <= max) {
+                cars.add(vehicle);
+            }
+        }
+        return cars;
     }
 
     public List<Vehicle> getVehiclesByColor(String color) {
-        return null;
+        List<Vehicle> cars = new ArrayList<>();
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.getColor().equals(color)) {
+                cars.add(vehicle);
+            }
+        }
+        return cars;
     }
 
     public List<Vehicle> getVehiclesByMileage(int min, int max) {
-        return null;
+
+        List<Vehicle> cars = new ArrayList<>();
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.getOdometer() >= min && vehicle.getOdometer() <= max) {
+                cars.add(vehicle);
+            }
+        }
+        return cars;
     }
 
     public List<Vehicle> getVehiclesByType(String vehicleType) {
-        return null;
+
+        List<Vehicle> cars = new ArrayList<>();
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.getVehicleType().equals(vehicleType)) {
+                cars.add(vehicle);
+            }
+        }
+        return cars;
     }
 
     public List<Vehicle> getAllVehicles() {
@@ -84,6 +118,7 @@ public class Dealership {
     }
 
     public void removeVehicle(Vehicle vehicle) {
+        vehicles.remove(vehicle);
 
     }
 
