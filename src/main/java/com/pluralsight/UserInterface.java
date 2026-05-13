@@ -54,4 +54,13 @@ public class UserInterface {
         }
         scanner.close();
     }
+
+    /**
+     * Loads dealership details from dealerShipFileManager
+     * into this.dealerShip
+     */
+    private void init() {
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        this.dealership = dealershipFileManager.getDealership();
+    }
 }
