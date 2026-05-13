@@ -120,9 +120,10 @@ public class Dealership {
 
     public void removeVehicle(Vehicle vehicle) {
 
-        for (Vehicle car : vehicles) {
-            if (car.getVin() == vehicle.getVin()) {
-                vehicles.remove(car);
+        for (int i = 0; i < vehicles.size(); i++) {
+            if (vehicles.get(i).getVin() == vehicle.getVin()) {
+                vehicles.remove(i);
+                return;
             }
         }
 

@@ -207,6 +207,7 @@ public class UserInterface {
         Vehicle vehicle = new Vehicle(vin, year, make, model, type, color, mileage, price);
         System.out.println(vehicle);
         dealership.addVehicle(vehicle);
+        DealershipFileManager.saveDealership(dealership);
 
     }
 
@@ -240,6 +241,7 @@ public class UserInterface {
         Vehicle vehicle = new Vehicle(vin, year, make, model, type, color, mileage, price);
         System.out.println(vehicle);
         dealership.removeVehicle(vehicle);
+        DealershipFileManager.saveDealership(dealership);
 
     }
 
