@@ -250,14 +250,19 @@ public class UserInterface {
     }
 
     /**
+     * Checks if Vehicles not null and empty
      * Prints all the vehicles given within filtered list
      *
      * @param vehicles A custom list of vehicles (filtered)
      */
     private void displayVehicles(List<Vehicle> vehicles) {
 
-        for (Vehicle vehicle : vehicles) {
-            System.out.println(vehicle);
+        if (vehicles == null || vehicles.isEmpty()) {
+            System.out.println("No Vehicles found.");
+        } else {
+            for (Vehicle vehicle : vehicles) {
+                System.out.println(vehicle);
+            }
         }
     }
 
