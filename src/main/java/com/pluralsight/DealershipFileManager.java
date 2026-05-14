@@ -13,11 +13,11 @@ public class DealershipFileManager {
             try {
                 // Creates new "inventory.csv" and lets user know.
                 if (file.createNewFile()) {
-                    System.out.println("New \"inventory.csv\" file created");
+                    System.out.println(Colors.WARN + "New \"inventory.csv\" file created" + Colors.RESET);
                 }
             } catch (IOException e) {
                 // Catches any errors when creating file.
-                System.out.println("Error creating file: " + e.getMessage());
+                System.out.println(Colors.ERROR + "Error creating file: " + e.getMessage() + Colors.RESET);
             }
             // If "inventory.csv" didn't exist, dealership has no details.
             return dealership;
@@ -33,13 +33,13 @@ public class DealershipFileManager {
             // If file is truly empty returns null.
 
             if (headerLine == null || headerLine.isBlank()) {
-                System.out.println("Header missing or blank");
+                System.out.println(Colors.ERROR + "Header missing or blank" + Colors.RESET);
                 return dealership;
             }
             String[] header = headerLine.split("\\|");
             // Handles blank header and less than over
             if (header.length != 3) {
-                System.out.println("Invalid header" + headerLine);
+                System.out.println(Colors.ERROR + "Invalid header" + headerLine + Colors.RESET);
                 return dealership;
             }
 
@@ -56,7 +56,7 @@ public class DealershipFileManager {
                     String[] values = line.split("\\|");
 
                     if (values.length != 8) {
-                        throw new Exception("Incomplete line " + line);
+                        throw new Exception(Colors.WARN + "Incomplete line " + line + Colors.RESET);
                     }
 
                     int vin = parseInt(values[0]);
@@ -73,12 +73,12 @@ public class DealershipFileManager {
                 }
                 // Catches all general errors within each transaction.
                 catch (Exception e) {
-                    System.out.println("Skipping bad line: " + line + "(" + e.getMessage() + ")");
+                    System.out.println(Colors.WARN + "Skipping bad line: " + line + "(" + e.getMessage() + ")" + Colors.RESET);
                 }
             }
             // catches file not being found or can't read, etc....
         } catch (IOException e) {
-            System.out.println("Error reading file:  " + e.getMessage());
+            System.out.println(Colors.ERROR + "Error reading file:  " + e.getMessage() + Colors.RESET);
         }
         return dealership;
     }
@@ -110,7 +110,7 @@ public class DealershipFileManager {
             }
 
         } catch (IOException e) {
-            System.out.println("Error writing to file: " + e.getMessage());
+            System.out.println(Colors.ERROR + "Error writing to file: " + e.getMessage() + Colors.RESET);
         }
     }
 
@@ -127,23 +127,23 @@ public class DealershipFileManager {
 
     private static Double parseDouble(String s) {
         if (s.isEmpty()) {
-            throw new IllegalArgumentException("Input can't be empty");
+            throw new IllegalArgumentException(Colors.WARN + "Input can't be empty" + Colors.RESET);
         }
         try {
             return Double.parseDouble(s);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Invalid number: " + s);
+            throw new IllegalArgumentException(Colors.WARN + "Invalid number: " + s + Colors.RESET);
         }
     }
 
     private static int parseInt(String s) {
         if (s.isEmpty()) {
-            throw new IllegalArgumentException("Input can't be empty");
+            throw new IllegalArgumentException(Colors.WARN + "Input can't be empty" + Colors.RESET);
         }
         try {
             return Integer.parseInt(s);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Invalid number: " + s);
+            throw new IllegalArgumentException(Colors.WARN + "Invalid number: " + s + Colors.RESET);
         }
     }
 }

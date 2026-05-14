@@ -96,6 +96,6 @@ public class Vehicle {
      */
     @Override
     public String toString() {
-        return String.format(ROW_FORMAT, vin, year, make, model, vehicleType, color, odometer, "$" + price);
+        return Colors.SUCCESS + String.format(ROW_FORMAT, vin, year, make, model, vehicleType, color, odometer, "$" + price) + Colors.RESET;
     }
 }
