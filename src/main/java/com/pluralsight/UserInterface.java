@@ -103,7 +103,7 @@ public class UserInterface {
 
         System.out.println("Based off your desired Make: " + make + " and Model:" + model + ".\n");
 
-        List<Vehicle> vehicles = dealership.getVehiclesByMake(make, model);
+        List<Vehicle> vehicles = dealership.getVehiclesByMakeAndModel(make, model);
 
         System.out.println(FORMATTED_HEADER);
         displayVehicles(vehicles);

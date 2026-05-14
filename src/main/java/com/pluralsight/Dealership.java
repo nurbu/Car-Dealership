@@ -60,7 +60,7 @@ public class Dealership {
         return cars;
     }
 
-    public List<Vehicle> getVehiclesByMake(String make, String model) {
+    public List<Vehicle> getVehiclesByMakeAndModel(String make, String model) {
         List<Vehicle> cars = new ArrayList<>();
         for (Vehicle vehicle : vehicles) {
             if (vehicle.getMake().equals(make) && vehicle.getModel().equals(model)) {
