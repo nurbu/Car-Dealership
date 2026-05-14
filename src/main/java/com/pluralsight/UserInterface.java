@@ -60,7 +60,8 @@ public class UserInterface {
                 case 7 -> processGetAllVehiclesRequest();
                 case 8 -> processAddVehicleRequest(scanner);
                 case 9 -> processRemoveVehicleRequest(scanner);
-                case 10 -> System.out.println("Thank you for visiting our dealership!");
+                case 10 ->
+                        System.out.println(Colors.SUCCESS + "\nThank you for visiting our dealership!" + Colors.RESET);
                 default -> System.out.println(Colors.ERROR + "Invalid choice!" + Colors.RESET + "\n");
             }
         }
