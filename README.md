@@ -33,6 +33,7 @@ be able to stay updated to give customers the most recent information.
   selections.
 - Task: Load vehicles information into Inventory ArrayList for each dealership.
 - Reuse helper functions parseDouble and create parseInt to handle any errors with inventory inputs.
+- Task: Add colors to CLI texts.
 
 ## Setup
 
